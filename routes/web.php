@@ -78,3 +78,10 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('fillable' , 'Front\CrudController@getoffers');
+
+
+Route::group(['prefix'=> 'offers'] , function(){
+    Route::get('store' , 'Front\CrudController@store');
+});
