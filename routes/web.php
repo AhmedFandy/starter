@@ -83,5 +83,9 @@ Route::get('fillable' , 'Front\CrudController@getoffers');
 
 
 Route::group(['prefix'=> 'offers'] , function(){
-    Route::get('store' , 'Front\CrudController@store');
+
+    Route::get('create' , 'Front\CrudController@create');
+    Route::post('store' , 'Front\CrudController@store')->name('offers.store');
+    
+
 });

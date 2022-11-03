@@ -13,7 +13,8 @@ return [
     |
     */
      "Hello Gus" => "اهلا يا شباب" ,
-     "Welcome"   => "مرحبا"
+     "Welcome"   => "مرحبا" ,
+     "offer name required" =>"اسم العرض مطلوب"
 
 
 ];

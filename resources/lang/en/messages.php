@@ -13,7 +13,8 @@ return [
     |
     */
     "Hello Gus" => " Hello Gus " ,
-    "Welcome"   => "Welcome"
+    "Welcome"   => "Welcome" ,
+    "offer name required" => "offer name required"
 
 
 
