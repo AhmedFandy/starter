@@ -21,8 +21,8 @@ class CrudController extends Controller
         ];
 
         $messages = [
-            'name.required'=>__('messages.offer name required'),
-            'price.required'=>'السعر مطلوب',
+            'name.required' =>__('messages.offer name required'),
+            'price.required'=>__('messages.price is required'),
             'price.numeric'=>'السعر يجب ان يكون رقم',
             'details.required'=>'هذا الحقل مطلوب'
         ];

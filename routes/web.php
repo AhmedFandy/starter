@@ -82,10 +82,21 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('fillable' , 'Front\CrudController@getoffers');
 
 
-Route::group(['prefix'=> 'offers'] , function(){
 
-    Route::get('create' , 'Front\CrudController@create');
-    Route::post('store' , 'Front\CrudController@store')->name('offers.store');
+
+    Route::group(['prefix'     => LaravelLocalization::setLocale(), 
+                  'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ] 
+                ],function(){
+                    
+        Route::group(['prefix'=> 'offers'] , function(){
+        
+            Route::get('create' , 'Front\CrudController@create');
+            Route::post('store' , 'Front\CrudController@store')->name('offers.store');
+        
+    });
+
+    
+    
     
 
 });

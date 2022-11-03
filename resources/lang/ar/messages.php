@@ -12,9 +12,10 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-     "Hello Gus" => "اهلا يا شباب" ,
-     "Welcome"   => "مرحبا" ,
-     "offer name required" =>"اسم العرض مطلوب"
+     "Hello Gus"           => "اهلا يا شباب" ,
+     "Welcome"             => "مرحبا" ,
+     "offer name required" =>"اسم العرض مطلوب",
+     "price is required"   => "سعر العرض مطلوب"
 
 
 ];
