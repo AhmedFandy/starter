@@ -83,7 +83,6 @@ Route::get('fillable' , 'Front\CrudController@getoffers');
 
 
 
-
     Route::group(['prefix'     => LaravelLocalization::setLocale(), 
                   'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ] 
                 ],function(){
@@ -92,6 +91,15 @@ Route::get('fillable' , 'Front\CrudController@getoffers');
         
             Route::get('create' , 'Front\CrudController@create');
             Route::post('store' , 'Front\CrudController@store')->name('offers.store');
+
+
+            Route::get('edit/{offer_id}' , 'Front\CrudController@editOffer')->name('offers.edit');
+            // Route::post('update/{offer_id}' , 'Front\CrudController@updateOffer')->name('offers.update');
+
+            Route::post('update/{offer_id}' , 'Front\CrudController@updateOffer')->name('offers.update');
+
+            Route::get('all' , 'Front\CrudController@getAllOffers');
+            
         
     });
 

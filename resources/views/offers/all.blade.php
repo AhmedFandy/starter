@@ -125,41 +125,24 @@
                 </div>
             @endif
 
-            <div class="content">
+            {{-- <div class="content">
                 <div class="title m-b-md">
                     {{__('messages.Add Your Offer')}}
                 </div>
 
-                <form method="POST" action="{{route('offers.store')}}" enctype="multipart/form-data"> 
+                <form method="POST" action="{{route('offers.store')}}"> 
                     @csrf
-
                     <div class="form-group">
-                      <label for="exampleInputEmail1">{{__('messages.Chosse photo')}}</label>
-                      <input type="file" class="form-control" name='photo' >
-                      @error('photo')
-                      <small class="form-text text-muted text-danger" >{{$message}}</small>
-                      @enderror
-                    </div>
-
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">{{__('messages.Offer Name ar')}}</label>
-                      <input type="text" class="form-control" name="name_ar" placeholder="Offer Name">
-                      @error('name_ar')
-                      <small id="emailHelp" class="form-text text-muted text-danger" >{{$message}}</small>
-                      @enderror
-                    </div>
-
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">{{__('messages.Offer Name en')}}</label>
-                      <input type="text" class="form-control" name="name_en" placeholder="Offer Name">
-                      @error('name_en')
+                      <label for="exampleInputEmail1">{{__('messages.Offer Name')}}</label>
+                      <input type="text" class="form-control" name="name" placeholder="Offer Name">
+                      @error('name')
                       <small id="emailHelp" class="form-text text-muted text-danger" >{{$message}}</small>
                       @enderror
                     </div>
 
 
                     <div class="form-group">
-                      <label for="exampleInputPassword1">{{__('messages.Enter Price')}}</label>
+                      <label for="exampleInputPassword1">Enter Price</label>
                       <input type="number" class="form-control" name="price" placeholder="Offer Details">
                       @error('price')
                       <small id="emailHelp" class="form-text text-muted text-danger">{{$message}}</small>
@@ -168,31 +151,46 @@
 
 
                     <div class="form-group">
-                        <label for="exampleInputPassword1">{{__('messages.Offer Details ar')}}</label>
-                        <input type="text" class="form-control" name="details_ar" placeholder="Offer Details">
-                        @error('details_ar')
+                        <label for="exampleInputPassword1">Offer Details</label>
+                        <input type="text" class="form-control" name="details" placeholder="Offer Details">
+                        @error('details')
                         <small id="emailHelp" class="form-text text-muted text-danger">{{$message}}</small>
                         @enderror
                     </div>
 
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">{{__('messages.Offer Details en')}}</label>
-                      <input type="text" class="form-control" name="details_en" placeholder="Offer Details">
-                      @error('details_en')
-                      <small id="emailHelp" class="form-text text-muted text-danger">{{$message}}</small>
-                      @enderror
-                  </div>
 
-
-                    {{-- <div class="form-check">
+                    <div class="form-check">
                       <input type="checkbox" class="form-check-input" id="exampleCheck1">
                       <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div> --}}
+                    </div>
                     <button type="submit" class="btn btn-primary">{{__('messages.Save Offer')}}</button>
                   </form>
 
 
             </div>
-        </div>
+        </div> --}}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">{{__('messages.Offer Name')}}</th>
+              <th scope="col">{{__('messages.Offer Price')}}</th>
+              <th scope="col">{{__('messages.Offer Details')}}</th>
+              <th scope="col">{{__('messages.Operation')}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach ( $offers as $offer)
+            <tr>
+              <td>{{$loop->iteration}}</td>
+              <td>{{$offer->name}}</td>
+              <td>{{$offer->price}}</td>
+              <td>{{$offer->details}}</td>
+              <td><a href="{{route('offers.edit' , $offer ->id)}}" class="btn btn-success">{{__('messages.update')}}</a>
+            </tr>
+            @endforeach
+
+          </tbody>
+        </table>
     </body>
 </html>

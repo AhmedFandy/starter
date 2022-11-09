@@ -130,20 +130,15 @@
                     {{__('messages.Add Your Offer')}}
                 </div>
 
-                <form method="POST" action="{{route('offers.store')}}" enctype="multipart/form-data"> 
+                {{-- <form method="post" action="{{route('offers.update', $offer ->id)}}">  --}}
+                {{-- <form method="POST" action="#">  --}}
+                  <form method="post" action="{{route('offers.update', $offer->id)}}">
                     @csrf
-
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">{{__('messages.Chosse photo')}}</label>
-                      <input type="file" class="form-control" name='photo' >
-                      @error('photo')
-                      <small class="form-text text-muted text-danger" >{{$message}}</small>
-                      @enderror
-                    </div>
-
+                    {{-- @method('PUT') --}}
+                   
                     <div class="form-group">
                       <label for="exampleInputEmail1">{{__('messages.Offer Name ar')}}</label>
-                      <input type="text" class="form-control" name="name_ar" placeholder="Offer Name">
+                      <input type="text" class="form-control" name="name_ar" value="{{$offer->name_ar}}" placeholder="Offer Name">
                       @error('name_ar')
                       <small id="emailHelp" class="form-text text-muted text-danger" >{{$message}}</small>
                       @enderror
@@ -151,7 +146,7 @@
 
                     <div class="form-group">
                       <label for="exampleInputEmail1">{{__('messages.Offer Name en')}}</label>
-                      <input type="text" class="form-control" name="name_en" placeholder="Offer Name">
+                      <input type="text" class="form-control" name="name_en" value="{{$offer->name_en}}" placeholder="Offer Name">
                       @error('name_en')
                       <small id="emailHelp" class="form-text text-muted text-danger" >{{$message}}</small>
                       @enderror
@@ -160,7 +155,7 @@
 
                     <div class="form-group">
                       <label for="exampleInputPassword1">{{__('messages.Enter Price')}}</label>
-                      <input type="number" class="form-control" name="price" placeholder="Offer Details">
+                      <input type="number" class="form-control" name="price" value="{{$offer->price}}" placeholder="Offer Details">
                       @error('price')
                       <small id="emailHelp" class="form-text text-muted text-danger">{{$message}}</small>
                       @enderror
@@ -169,7 +164,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputPassword1">{{__('messages.Offer Details ar')}}</label>
-                        <input type="text" class="form-control" name="details_ar" placeholder="Offer Details">
+                        <input type="text" class="form-control" name="details_ar" value="{{$offer->details_ar}}" placeholder="Offer Details">
                         @error('details_ar')
                         <small id="emailHelp" class="form-text text-muted text-danger">{{$message}}</small>
                         @enderror
@@ -177,7 +172,7 @@
 
                     <div class="form-group">
                       <label for="exampleInputPassword1">{{__('messages.Offer Details en')}}</label>
-                      <input type="text" class="form-control" name="details_en" placeholder="Offer Details">
+                      <input type="text" class="form-control" name="details_en" value="{{$offer->details_en}}" placeholder="Offer Details">
                       @error('details_en')
                       <small id="emailHelp" class="form-text text-muted text-danger">{{$message}}</small>
                       @enderror
@@ -188,7 +183,7 @@
                       <input type="checkbox" class="form-check-input" id="exampleCheck1">
                       <label class="form-check-label" for="exampleCheck1">Check me out</label>
                     </div> --}}
-                    <button type="submit" class="btn btn-primary">{{__('messages.Save Offer')}}</button>
+                    <button type="submit" class="btn btn-primary">{{__('messages.Update Offer')}}</button>
                   </form>
 
 
