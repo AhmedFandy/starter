@@ -87,7 +87,7 @@ Route::get('fillable' , 'Front\CrudController@getoffers');
                   'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ] 
                 ],function(){
                     
-        Route::group(['prefix'=> 'offers'] , function(){
+             Route::group(['prefix'=> 'offers'] , function(){
         
             Route::get('create' , 'Front\CrudController@create');
             Route::post('store' , 'Front\CrudController@store')->name('offers.store');
@@ -99,12 +99,15 @@ Route::get('fillable' , 'Front\CrudController@getoffers');
             Route::post('update/{offer_id}' , 'Front\CrudController@updateOffer')->name('offers.update');
 
             Route::get('all' , 'Front\CrudController@getAllOffers');
+
+
             
         
-    });
+         });
 
     
-    
+          Route::get('youtube' , 'HomeController@getVideo');
+
     
 
 });

@@ -123,5 +123,11 @@ class CrudController extends Controller
     }
 
 
+
+    public function getVideo(){
+        return view('vedio');
+    }
+
+
     
 }
