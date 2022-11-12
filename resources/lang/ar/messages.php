@@ -32,7 +32,14 @@ return [
      "update"                   => "تحديث" ,
      "Update Offer"             => "تحديث العرض" ,
      "Offer added sucssefully"  =>"تم اضافه العرض بنجاح",
-     "Chosse photo"             => "اختر الصوره"
+     "Chosse photo"             => "اختر الصوره" ,
+     "Update Offer"             => "تعديل العرض" ,
+     "Offer Photo"              => "صوره العرض"  ,
+     "Delete"                   => "حذف"          ,
+     "Offer not exist"          => "العرض غير موجود" ,
+     "Offer Deleted successfully"     => "تم الحذف بنجاح"
+
+
 
 
 

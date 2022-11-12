@@ -65,6 +65,18 @@
         </style>
     </head>
     <body>
+      @if(Session::has('success'))
+      <div class="alert alert-success">
+        {{Session::get('success')}}
+     </div>
+      @endif
+
+     @if (Session::has('error'))
+    <div class="alert alert-danger">
+       {{Session::get('error')}}
+    </div>
+   @endif
+
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">Navbar</a>

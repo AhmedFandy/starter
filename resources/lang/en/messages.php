@@ -31,7 +31,13 @@ return [
     "update"                   => "Update" ,
     "Update Offer"             => "Update Offer" ,
     "Offer added sucssefully"  => "Offer added sucssefully" ,
-    "Chosse photo"             => "Chosse photo"
+    "Chosse photo"             => "Chosse photo" ,
+    "Update Offer"             => "Update Offer" ,
+    "Offer Photo"              => "Offer Photo"  ,
+    "Delete"                   => "Delete"       ,
+    "Offer not exist"          => "Offer not exist"  ,
+    "Offer Deleted successfully"     => "Deleted successfully"
+
 
 
 

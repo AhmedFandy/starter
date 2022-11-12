@@ -127,12 +127,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    {{__('messages.Add Your Offer')}}
+                    {{__('messages.Update Offer')}}
                 </div>
 
                 {{-- <form method="post" action="{{route('offers.update', $offer ->id)}}">  --}}
                 {{-- <form method="POST" action="#">  --}}
-                  <form method="post" action="{{route('offers.update', $offer->id)}}">
+                  <form method="post" action="{{route('offers.update', $offer->id)}}" enctype="multipart/form-data">
                     @csrf
                     {{-- @method('PUT') --}}
                    

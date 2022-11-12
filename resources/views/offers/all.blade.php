@@ -110,7 +110,7 @@
               </div>
             </div>
           </nav>
-        <div class="flex-center position-ref full-height">
+        {{-- <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -123,7 +123,9 @@
                         @endif
                     @endauth
                 </div>
-            @endif
+            @endif --}}
+        
+        
 
             {{-- <div class="content">
                 <div class="title m-b-md">
@@ -169,6 +171,20 @@
 
             </div>
         </div> --}}
+
+        @if(Session::has('success'))
+            <div class="alert alert-success">
+              {{Session::get('success')}}
+            </div>
+        @endif
+
+        @if (Session::has('error'))
+        <div class="alert alert-danger">
+          {{Session::get('error')}}
+        </div>
+        @endif
+
+
         <table class="table">
           <thead>
             <tr>
@@ -176,17 +192,23 @@
               <th scope="col">{{__('messages.Offer Name')}}</th>
               <th scope="col">{{__('messages.Offer Price')}}</th>
               <th scope="col">{{__('messages.Offer Details')}}</th>
+              <th scope="col">{{__('messages.Offer Photo')}}</th>
               <th scope="col">{{__('messages.Operation')}}</th>
+
             </tr>
           </thead>
           <tbody>
-            @foreach ( $offers as $offer)
+            @foreach ($offers as $offer)
             <tr>
               <td>{{$loop->iteration}}</td>
               <td>{{$offer->name}}</td>
               <td>{{$offer->price}}</td>
               <td>{{$offer->details}}</td>
+              <td><img style="width:100px ; height:100px;" src="{{asset('images/offers/'.$offer->photo)}}"> </td>
               <td><a href="{{route('offers.edit' , $offer ->id)}}" class="btn btn-success">{{__('messages.update')}}</a>
+                  <a href="{{route('offers.delete' , $offer ->id)}}" class="btn btn-danger">{{__('messages.Delete')}}</a>
+              </td>
+              
             </tr>
             @endforeach
 

@@ -97,8 +97,10 @@ Route::get('fillable' , 'Front\CrudController@getoffers');
             // Route::post('update/{offer_id}' , 'Front\CrudController@updateOffer')->name('offers.update');
 
             Route::post('update/{offer_id}' , 'Front\CrudController@updateOffer')->name('offers.update');
+            Route::get('delete/{offer_id}' , 'Front\CrudController@delete')->name('offers.delete');
 
-            Route::get('all' , 'Front\CrudController@getAllOffers');
+
+            Route::get('all' , 'Front\CrudController@getAllOffers')->name('offers.all');
 
 
             

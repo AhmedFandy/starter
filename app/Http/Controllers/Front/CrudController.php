@@ -21,6 +21,7 @@ class CrudController extends Controller
 
     public function getAllOffers(){
         $offers = Offer::select('id' , 
+        'photo',
         'name_'. LaravelLocalization::getCurrentLocale() . ' as name'  ,
         'price' , 
         'details_'. LaravelLocalization::getCurrentLocale() . ' as details'
@@ -62,7 +63,7 @@ class CrudController extends Controller
         // $request->photo->move($path , $file_name);
 
 
-        $file_name = $this->saveImage($request->photo , 'images\offers');
+        $file_name = $this->saveImage($request->photo, "images/offers");
         
 
 
@@ -96,6 +97,16 @@ class CrudController extends Controller
     
     //  dd($offer);
         return view('offers.edit' , compact('offer'));
+    }
+
+
+    public function delete($offer_id){
+        $offer = Offer::find($offer_id);
+        if(!$offer){
+            return redirect()->back()->with(['error' => __('messages.Offer not exist')]);
+        }
+        $offer->delete();
+        return redirect()->route('offers.all' )->with(['success' => __('messages.Offer Deleted successfully')]);
     }
 
 
