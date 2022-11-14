@@ -107,9 +107,19 @@ Route::get('fillable' , 'Front\CrudController@getoffers');
         
          });
 
+
+
     
           Route::get('youtube' , 'HomeController@getVideo');
 
     
 
 });
+
+
+         ////////////////Ajax Route////////////////////
+Route::group(['prefix'=> 'ajaxoffersoffers'] , function(){
+        
+    Route::get('create' , 'OfferController@create');
+   // Route::post('store' , 'Front\CrudController@store')->name('offers.store');
+ });
