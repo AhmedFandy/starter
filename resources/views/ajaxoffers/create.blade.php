@@ -2,6 +2,10 @@
 @extends('layouts.app')
 
 @section('content')
+
+    <div class="alert alert-success" id="success_msg" style="display: none">
+     تم الحفظ بنجاح
+    </div>
     
       <div class="container">
         <div class="flex-center position-ref full-height">
@@ -10,7 +14,7 @@
                     {{__('messages.Add Your Offer')}}
                 </div>
 
-                <form method="POST" action="{{route('offers.store')}}" enctype="multipart/form-data"> 
+                <form method="POST" id="OfferForm" action="" enctype="multipart/form-data"> 
                     @csrf
 
                     <div class="form-group">
@@ -63,13 +67,53 @@
                       @enderror
                   </div>
 
-                    <button type="submit" class="btn btn-primary">{{__('messages.Save Offer')}}</button>
+                    <button  id="save_offer" class="btn btn-primary">{{__('messages.Save Offer')}}</button>
                   </form>
 
 
             </div>
         </div>
       </div>
+@stop
+
+@section('scripts')
+
+<script>
+  $(document).on('click' , '#save_offer' ,function(e){
+    e.preventDefault();
+    var formdata = new FormData($('#OfferForm')[0]);  //content of form in variable
+
+    $.ajax({
+    type        : 'post' ,
+    enctype     : 'multipart/form-data',
+    url         :  "{{route('ajax.offers.store')}}" ,
+    // data    :  {
+    //   '_token'     : "{{csrf_token()}}",
+    //   'name_ar'    : $("input[name = 'name_ar']").val(),
+    //   'name_en'    : $("input[name = 'name_en']").val(),
+    //   'price'      : $("input[name = 'price']").val(),
+    //   'details_ar' : $("input[name = 'details_ar']").val(),
+    //   'details_en' : $("input[name = 'details_en']").val(),
+
+    // } ,
+    data        : formdata ,
+    proceeeData : false,
+    contentType : false,
+    cache       : false,
+    success     : function(data){
+
+      if(data.status == true){
+        $('#success_msg').show();
+      }
+
+    } , error: function(reject){
+
+    }
+   });
+  });
+
+</script>
+    
 @stop
 
 

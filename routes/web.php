@@ -118,8 +118,20 @@ Route::get('fillable' , 'Front\CrudController@getoffers');
 
 
          ////////////////Ajax Route////////////////////
-Route::group(['prefix'=> 'ajaxoffersoffers'] , function(){
+Route::group(['prefix'=> 'ajaxoffers'] , function(){
         
     Route::get('create' , 'OfferController@create');
-   // Route::post('store' , 'Front\CrudController@store')->name('offers.store');
+    Route::post('store' , 'OfferController@store')->name('ajax.offers.store');
+    Route::get('all' , 'OfferController@all')->name('ajax.offers.all');
+    Route::post('delete' , 'OfferController@delete')->name('ajax.offers.delete');
+    Route::get('edit/{offer_id}' , 'OfferController@edit')->name('ajax.offers.edit');
+    Route::post('update' , 'OfferController@update')->name('ajax.offers.update');
+
+
  });
+ ////////////////End Ajax Route////////////////////
+
+
+ ////////////////Begin Authentication Route////////////////////
+ Route::get('CustomeController@adualt');
+ ////////////////End Authentication Route////////////////////
