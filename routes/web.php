@@ -50,7 +50,7 @@ Route::get('/landing', function () {
 
 Route::get('/master', function () {
     return view('layouts.master');
-});
+})->name('master');
 
 
 Route::get('/aboutus', function () {
@@ -116,6 +116,10 @@ Route::get('fillable' , 'Front\CrudController@getoffers');
 
 });
 
+Route::get('/dasboard' , function(){
+    return 'Not Adult';
+})->name('not.adult');
+
 
          ////////////////Ajax Route////////////////////
 Route::group(['prefix'=> 'ajaxoffers'] , function(){
@@ -133,5 +137,12 @@ Route::group(['prefix'=> 'ajaxoffers'] , function(){
 
 
  ////////////////Begin Authentication Route////////////////////
- Route::get('CustomeController@adualt');
+ Route::group(['middleware'=>'CheckAge' , 'namespace'=>'Auth'],function () {
+
+    Route::get('adualts','CustomeController@adualt')->name('adualts');
+
+ });
+ 
  ////////////////End Authentication Route////////////////////
+ Route::get('site','CustomeController@site')->name('site');
+ Route::get('admin','CustomeController@admin')->name('admin');
