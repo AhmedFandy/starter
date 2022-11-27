@@ -144,5 +144,5 @@ Route::group(['prefix'=> 'ajaxoffers'] , function(){
  });
  
  ////////////////End Authentication Route////////////////////
- Route::get('site','CustomeController@site')->name('site');
- Route::get('admin','CustomeController@admin')->name('admin');
+ Route::get('site','Auth\CustomeController@site')->name('site');
+ Route::get('admin','Auth\CustomeController@admin')->name('admin');
