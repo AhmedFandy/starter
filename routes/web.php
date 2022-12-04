@@ -110,7 +110,7 @@ Route::get('fillable' , 'Front\CrudController@getoffers');
 
 
     
-          Route::get('youtube' , 'HomeController@getVideo');
+          Route::get('youtube' , 'HomeController@getVideo')->middleware('auth');
 
     
 
@@ -144,5 +144,16 @@ Route::group(['prefix'=> 'ajaxoffers'] , function(){
  });
  
  ////////////////End Authentication Route////////////////////
- Route::get('site','Auth\CustomeController@site')->name('site');
- Route::get('admin','Auth\CustomeController@admin')->name('admin');
+
+
+ Route::get('site','Auth\CustomeController@site')->middleware('auth:web')->name('site');
+ Route::get('admin','Auth\CustomeController@admin')->middleware('auth:admin')->name('admin');
+ Route::get('admin/login','Auth\CustomeController@adminLogin')->name('admin.login');
+ Route::post('admin/login','Auth\CustomeController@checkAdminLogin')->name('save.admin.login');
+
+
+
+###################### Begin Relations Routes  #######################
+Route::get('has-one' , 'Relation\RelationController@hasOneRelation');
+###################### End   Relations Routes  #######################
+

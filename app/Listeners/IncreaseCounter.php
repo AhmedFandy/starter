@@ -26,6 +26,13 @@ class IncreaseCounter
      */
     public function handle(VideoViewer $event)
     {
-        //
+        if(session() ->has('vedioVisited'))
+        $this->updateViewr($event ->video);
+    }
+
+    function updateViewr($vedio){
+        $vedio ->viewers =  $vedio ->viewers +1 ;
+        $vedio ->save();
+        session()->put('vedioVisited' , $vedio->id);
     }
 }
