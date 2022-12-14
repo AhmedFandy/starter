@@ -15,6 +15,8 @@
 
 //use Illuminate\Routing\Route;
 
+use App\Models\Hospital;
+
 Route::get('/', function () {
 
     $data=[];
@@ -154,6 +156,46 @@ Route::group(['prefix'=> 'ajaxoffers'] , function(){
 
 
 ###################### Begin Relations Routes  #######################
-Route::get('has-one' , 'Relation\RelationController@hasOneRelation');
-###################### End   Relations Routes  #######################
+Route::get('has-one' , 'Relation\RelationController1@hasOneRelation');
+
+Route::get('has-one-reverse' , 'Relation\RelationController1@hasOneRelationReverse');
+
+Route::get('get-user-has-phone' , 'Relation\RelationController1@getUserHasPhone');
+
+Route::get('get-user-not-has-phone' , 'Relation\RelationController1@getUserNotHasPhone');
+
+Route::get('get-user-has-phone-with-condition' , 'Relation\RelationController1@getUserHasPhoneWithCondition');
+
+###################### Begin One to Many Relations Routes  #######################
+Route::get('hospital-has-many' , 'Relation\RelationController1@getHospitalDoctors');
+
+Route::get('hospitals' , 'Relation\RelationController1@hospitals')->name('hospitals.all');
+
+Route::get('doctors/{hospital_id}' , 'Relation\RelationController1@doctors')->name('hospitals.doctors');
+
+Route::get('hospitals/{hospital_id}' , 'Relation\RelationController1@deleteHospitals')->name('delete.hospitals');
+
+Route::get('hospitals-has-doctors' , 'Relation\RelationController1@hospitalsHasDoctors');
+
+Route::get('hospitals-has-doctors-male' , 'Relation\RelationController1@hospitalsHasOnlyMaleDoctors');
+
+Route::get('hospitals-not-has-doctors' , 'Relation\RelationController1@hospitalsNotHasDoctors');
+
+
+
+
+
+###################### End One to Many Relations Routes  #######################
+
+###################### Begin Many to Many Relations Routes  #######################
+Route::get('doctors-services' , 'Relation\RelationController1@getDoctorsServices');
+Route::get('services-doctors' , 'Relation\RelationController1@getServicesDoctors');
+Route::get('services/doctors/{doctor_id}' , 'Relation\RelationController1@getDoctorsServicesById')->name('doctors.services');
+Route::post('Saveservices-to-doctor' , 'Relation\RelationController1@saveServicesToDoctors')->name('save.doctors.services');
+
+
+
+
+###################### Begin Many to Many Relations Routes  #######################
+
 

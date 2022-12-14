@@ -20,24 +20,20 @@
                     <div class="form-group">
                       <label for="exampleInputEmail1">{{__('messages.Chosse photo')}}</label>
                       <input type="file" class="form-control" name='photo' >
-                      @error('photo')
-                      <small class="form-text text-muted text-danger" >{{$message}}</small>
-                      @enderror
+                      <small id="photo_error" class="form-text text-muted text-danger" ></small>
                     </div>
 
                     <div class="form-group">
                       <label for="exampleInputEmail1">{{__('messages.Offer Name ar')}}</label>
                       <input type="text" class="form-control" name="name_ar" placeholder="Offer Name">
-                      @error('name_ar')
-                      <small id="emailHelp" class="form-text text-muted text-danger" >{{$message}}</small>
+                      <small id="name_ar_error" class="form-text text-muted text-danger" ></small>
                       @enderror
                     </div>
 
                     <div class="form-group">
                       <label for="exampleInputEmail1">{{__('messages.Offer Name en')}}</label>
                       <input type="text" class="form-control" name="name_en" placeholder="Offer Name">
-                      @error('name_en')
-                      <small id="emailHelp" class="form-text text-muted text-danger" >{{$message}}</small>
+                      <small id="name_en_error" class="form-text text-muted text-danger"></small>
                       @enderror
                     </div>
 
@@ -45,26 +41,20 @@
                     <div class="form-group">
                       <label for="exampleInputPassword1">{{__('messages.Enter Price')}}</label>
                       <input type="number" class="form-control" name="price" placeholder="Offer Details">
-                      @error('price')
-                      <small id="emailHelp" class="form-text text-muted text-danger">{{$message}}</small>
-                      @enderror
+                      <small id="price_error" class="form-text text-muted text-danger"></small>
                     </div>
 
 
                     <div class="form-group">
                         <label for="exampleInputPassword1">{{__('messages.Offer Details ar')}}</label>
                         <input type="text" class="form-control" name="details_ar" placeholder="Offer Details">
-                        @error('details_ar')
-                        <small id="emailHelp" class="form-text text-muted text-danger">{{$message}}</small>
-                        @enderror
+                        <small id="details_ar_error" class="form-text text-muted text-danger"></small>
                     </div>
 
                     <div class="form-group">
                       <label for="exampleInputPassword1">{{__('messages.Offer Details en')}}</label>
                       <input type="text" class="form-control" name="details_en" placeholder="Offer Details">
-                      @error('details_en')
-                      <small id="emailHelp" class="form-text text-muted text-danger">{{$message}}</small>
-                      @enderror
+                      <small id="details_en_error" class="form-text text-muted text-danger"></small>
                   </div>
 
                     <button  id="save_offer" class="btn btn-primary">{{__('messages.Save Offer')}}</button>
@@ -81,6 +71,17 @@
 <script>
   $(document).on('click' , '#save_offer' ,function(e){
     e.preventDefault();
+    $('#photo_error').text(''); ///make reset to value
+    $('#name_ar_error').text('');
+    $('#name_en_error').text('');
+    $('#price_error').text('');
+    $('#details_ar_error').text('');
+    $('#details_en_error').text('');
+
+
+
+
+
     var formdata = new FormData($('#OfferForm')[0]);  //content of form in variable
 
     $.ajax({
@@ -107,8 +108,11 @@
       }
 
     } , error: function(reject){
-
-    }
+      var response = $.parseJSON(reject.responseText);
+      $.each(response.errors , function(key , val)){
+        $("#" + key + "_error").text(val[0]);
+      }
+     }
    });
   });
 
