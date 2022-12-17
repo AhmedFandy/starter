@@ -17,6 +17,8 @@
 
 use App\Models\Hospital;
 
+define('PAGINATION_COUNT' , 3);
+
 Route::get('/', function () {
 
     $data=[];
@@ -103,6 +105,7 @@ Route::get('fillable' , 'Front\CrudController@getoffers');
 
 
             Route::get('all' , 'Front\CrudController@getAllOffers')->name('offers.all');
+            Route::get('get-all-inactive-offer' , 'Front\CrudController@getAllInactiveOffers');
 
 
             
@@ -181,10 +184,6 @@ Route::get('hospitals-has-doctors-male' , 'Relation\RelationController1@hospital
 
 Route::get('hospitals-not-has-doctors' , 'Relation\RelationController1@hospitalsNotHasDoctors');
 
-
-
-
-
 ###################### End One to Many Relations Routes  #######################
 
 ###################### Begin Many to Many Relations Routes  #######################
@@ -193,9 +192,13 @@ Route::get('services-doctors' , 'Relation\RelationController1@getServicesDoctors
 Route::get('services/doctors/{doctor_id}' , 'Relation\RelationController1@getDoctorsServicesById')->name('doctors.services');
 Route::post('Saveservices-to-doctor' , 'Relation\RelationController1@saveServicesToDoctors')->name('save.doctors.services');
 
+###################### End Many to Many Relations Routes  #######################
+
+###################### has one through  #########################################
+Route::get('has-one-through' , 'Relation\RelationController1@getPatientsDoctors');
+Route::get('has-many-through' , 'Relation\RelationController1@getCountryDoctors');
 
 
 
-###################### Begin Many to Many Relations Routes  #######################
 
 

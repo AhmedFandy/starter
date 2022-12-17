@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Relation;
 
 use App\Http\Controllers\Controller;
+use App\Models\Country;
 use App\Models\Doctor;
 use App\Models\Hospital;
+use App\Models\Patient;
 use App\Models\Phone;
 use App\Models\Service;
 use App\User;
@@ -150,6 +152,17 @@ class RelationController1 extends Controller
 
 
         return 'Success';
+    }
+
+    public function getPatientsDoctors(){
+        $patient = Patient::find(2);
+        return $patient->doctors;
+    }
+
+
+    public function getCountryDoctors(){
+        $country = Country::find(1);
+        return $country->doctors;
     }
    
 
