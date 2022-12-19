@@ -149,7 +149,16 @@ class CrudController extends Controller
 
 
     public function getAllInactiveOffers(){
-      return  Offer::where('status' , 0)->get();  //all inactive offer
+        
+      //return  Offer::where('status' , 0)->get();  //all inactive offer
+      //return $inactiveoffers = Offer::inactive()->get();  ////all inactive offer using localscope
+         // global scope
+        // return  $inactiveOffers = Offer::get();  //all inactive offers
+
+         // how to  remove global scope
+
+         return $offer  = Offer::withoutGlobalScope(OfferScope::class)->get();
+
     }
 
 
